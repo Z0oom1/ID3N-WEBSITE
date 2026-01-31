@@ -9,11 +9,10 @@ export default function ProjectsSection3D() {
   const projects = [
     {
       id: 1,
-      title: 'Controle de Identificacao para Alimentos Wilson',
-      description: 'Sistema avancado de rastreamento e identificacao para alimentos',
+      title: 'Plataforma E-commerce',
+      description: 'Sistema completo de e-commerce com pagamento integrado',
       color: 'from-blue-600 to-cyan-600',
-      features: ['React', 'Node.js', 'PostgreSQL', 'QR Code'],
-      url: 'https://awiden.netlify.app',
+      features: ['React', 'Node.js', 'PostgreSQL', 'Stripe'],
     },
     {
       id: 2,
@@ -85,51 +84,42 @@ export default function ProjectsSection3D() {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ duration: 0.5 }}
-                  className="w-full h-full bg-white flex flex-col items-center justify-center overflow-hidden"
+                  className={`w-full h-full bg-gradient-to-br ${project.color} flex flex-col items-center justify-center p-8`}
                 >
-                  {/* Exibir site em iframe */}
-                  {project.url ? (
-                    <iframe
-                      src={project.url}
-                      title={project.title}
-                      className="w-full h-full border-0"
-                      sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-pointer-lock"
-                    />
-                  ) : (
-                    <motion.div
-                      className="text-center text-white"
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.2, duration: 0.5 }}
+                  {/* Conteúdo do Projeto */}
+                  <motion.div
+                    className="text-center text-white"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2, duration: 0.5 }}
+                  >
+                    <h3 className="text-3xl font-bold mb-3">{project.title}</h3>
+                    <p className="text-lg opacity-90 mb-8 max-w-xs mx-auto">{project.description}</p>
+
+                    {/* Features */}
+                    <div className="flex flex-wrap justify-center gap-2 mb-8">
+                      {project.features.map((feature, index) => (
+                        <motion.span
+                          key={index}
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ delay: 0.3 + index * 0.1 }}
+                          className="px-3 py-1 rounded-full bg-white/20 text-white text-sm font-medium backdrop-blur-sm"
+                        >
+                          {feature}
+                        </motion.span>
+                      ))}
+                    </div>
+
+                    {/* CTA */}
+                    <motion.button
+                      className="px-6 py-2 rounded-lg bg-white text-slate-900 font-semibold hover:bg-white/90 transition-colors"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
                     >
-                      <h3 className="text-3xl font-bold mb-3">{project.title}</h3>
-                      <p className="text-lg opacity-90 mb-8 max-w-xs mx-auto">{project.description}</p>
-
-                      {/* Features */}
-                      <div className="flex flex-wrap justify-center gap-2 mb-8">
-                        {project.features.map((feature, index) => (
-                          <motion.span
-                            key={index}
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: 0.3 + index * 0.1 }}
-                            className="px-3 py-1 rounded-full bg-white/20 text-white text-sm font-medium backdrop-blur-sm"
-                          >
-                            {feature}
-                          </motion.span>
-                        ))}
-                      </div>
-
-                      {/* CTA */}
-                      <motion.button
-                        className="px-6 py-2 rounded-lg bg-white text-slate-900 font-semibold hover:bg-white/90 transition-colors"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                      >
-                        Ver Projeto Completo
-                      </motion.button>
-                    </motion.div>
-                  )}
+                      Ver Projeto Completo
+                    </motion.button>
+                  </motion.div>
                 </motion.div>
               </AnimatePresence>
             </Notebook3D>
