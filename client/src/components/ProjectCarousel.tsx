@@ -7,11 +7,12 @@ export default function ProjectCarousel() {
 
   const projects = [
     {
-      title: 'Plataforma de E-commerce',
-      description: 'Sistema completo de e-commerce com pagamento integrado, gestão de estoque e analytics em tempo real.',
-      image: '🛍️',
-      tags: ['React', 'Node.js', 'PostgreSQL', 'Stripe'],
+      title: 'Controle de Identificacao para Alimentos Wilson',
+      description: 'Sistema avancado de rastreamento e identificacao para alimentos, com controle de qualidade e conformidade regulatoria.',
+      image: '🏷️',
+      tags: ['React', 'Node.js', 'PostgreSQL', 'QR Code'],
       color: 'from-blue-500 to-cyan-500',
+      link: 'https://awiden.netlify.app',
     },
     {
       title: 'App de Gestão de Projetos',
@@ -127,14 +128,17 @@ export default function ProjectCarousel() {
                     ))}
                   </div>
 
-                  <motion.button
-                    className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-colors"
+                  <motion.a
+                    href={projects[currentIndex].link || '#'}
+                    target={projects[currentIndex].link ? '_blank' : '_self'}
+                    rel={projects[currentIndex].link ? 'noopener noreferrer' : ''}
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-colors cursor-pointer"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
                     Ver Projeto
                     <ExternalLink size={18} />
-                  </motion.button>
+                  </motion.a>
                 </motion.div>
               </div>
             </motion.div>

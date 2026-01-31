@@ -100,3 +100,10 @@
 - [x] Implementar hover effects sofisticados
 - [x] Adicionar blur/glassmorphism effects
 - [ ] Testar em mobile, tablet e desktop
+
+
+## Alteracoes de Projetos
+- [x] Trocar primeiro projeto para Controle de Identificacao para Alimentos Wilson
+- [x] Adicionar link para https://awiden.netlify.app
+- [x] Melhorar responsividade para tablet
+- [x] Deixar outros projetos como estao para edicao posterior
