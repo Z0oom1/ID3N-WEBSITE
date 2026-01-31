@@ -1,15 +1,14 @@
 import { defineConfig } from "drizzle-kit";
+import path from "path";
 
-const connectionString = process.env.DATABASE_URL;
-if (!connectionString) {
-  throw new Error("DATABASE_URL is required to run drizzle commands");
-}
+// Use SQLite for local development
+const dbPath = path.resolve(process.cwd(), "dev.db");
 
 export default defineConfig({
   schema: "./drizzle/schema.ts",
   out: "./drizzle",
-  dialect: "mysql",
+  dialect: "sqlite",
   dbCredentials: {
-    url: connectionString,
+    url: `file:${dbPath}`,
   },
 });

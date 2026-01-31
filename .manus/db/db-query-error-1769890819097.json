@@ -1,0 +1,19 @@
+{
+  "query": "CREATE TABLE `leads` (\n\t`id` integer PRIMARY KEY AUTOINCREMENT NOT NULL,\n\t`name` text NOT NULL,\n\t`email` text NOT NULL,\n\t`phone` text NOT NULL,\n\t`cpf` text NOT NULL,\n\t`company` text NOT NULL,\n\t`service` text NOT NULL,\n\t`message` text,\n\t`whatsapp_sent` integer DEFAULT 0 NOT NULL,\n\t`createdAt` integer NOT NULL,\n\t`updatedAt` integer NOT NULL\n);\n\nCREATE TABLE `users` (\n\t`id` integer PRIMARY KEY AUTOINCREMENT NOT NULL,\n\t`openId` text NOT NULL,\n\t`name` text,\n\t`email` text,\n\t`loginMethod` text,\n\t`role` text DEFAULT 'user' NOT NULL,\n\t`createdAt` integer NOT NULL,\n\t`updatedAt` integer NOT NULL,\n\t`lastSignedIn` integer NOT NULL\n);\n\nCREATE UNIQUE INDEX `users_openId_unique` ON `users` (`openId`);",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4B9bMkS5dUnxp9J.root --database gLtVkXoJtHiDGwNZMKYvSo --execute CREATE TABLE `leads` (\n\t`id` integer PRIMARY KEY AUTOINCREMENT NOT NULL,\n\t`name` text NOT NULL,\n\t`email` text NOT NULL,\n\t`phone` text NOT NULL,\n\t`cpf` text NOT NULL,\n\t`company` text NOT NULL,\n\t`service` text NOT NULL,\n\t`message` text,\n\t`whatsapp_sent` integer DEFAULT 0 NOT NULL,\n\t`createdAt` integer NOT NULL,\n\t`updatedAt` integer NOT NULL\n);\n\nCREATE TABLE `users` (\n\t`id` integer PRIMARY KEY AUTOINCREMENT NOT NULL,\n\t`openId` text NOT NULL,\n\t`name` text,\n\t`email` text,\n\t`loginMethod` text,\n\t`role` text DEFAULT 'user' NOT NULL,\n\t`createdAt` integer NOT NULL,\n\t`updatedAt` integer NOT NULL,\n\t`lastSignedIn` integer NOT NULL\n);\n\nCREATE UNIQUE INDEX `users_openId_unique` ON `users` (`openId`);",
+  "returncode": 1,
+  "logs": [
+    "ERROR 1064 (42000) at line 1: You have an error in your SQL syntax; check the manual that corresponds to your TiDB version for the right syntax to use line 2 column 40 near \"AUTOINCREMENT NOT NULL,",
+    "\t`name` text NOT NULL,",
+    "\t`email` text NOT NULL,",
+    "\t`phone` text NOT NULL,",
+    "\t`cpf` text NOT NULL,",
+    "\t`company` text NOT NULL,",
+    "\t`service` text NOT NULL,",
+    "\t`message` text,",
+    "\t`whatsapp_sent` integer DEFAULT 0 NOT NULL,",
+    "\t`createdAt` integer NOT NULL,",
+    "\t`updatedAt` integer NOT NULL",
+    ")\""
+  ]
+}

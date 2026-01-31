@@ -1,19 +1,12 @@
 {
   "version": "7",
-  "dialect": "mysql",
+  "dialect": "sqlite",
   "entries": [
     {
       "idx": 0,
-      "version": "5",
-      "when": 1769882771745,
-      "tag": "0000_curious_celestials",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "5",
-      "when": 1769883306413,
-      "tag": "0001_rare_ronan",
+      "version": "6",
+      "when": 1769890809025,
+      "tag": "0000_shallow_natasha_romanoff",
       "breakpoints": true
     }
   ]
