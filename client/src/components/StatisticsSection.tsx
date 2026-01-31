@@ -6,22 +6,22 @@ export default function StatisticsSection() {
     {
       value: 500,
       label: 'Projetos Entregues',
-      icon: '🚀',
+      color: 'from-blue-600 to-cyan-600',
     },
     {
       value: 150,
       label: 'Clientes Satisfeitos',
-      icon: '😊',
+      color: 'from-purple-600 to-pink-600',
     },
     {
       value: 12,
       label: 'Anos de Expertise',
-      icon: '⭐',
+      color: 'from-green-600 to-emerald-600',
     },
     {
       value: 98,
       label: '% Taxa de Satisfação',
-      icon: '✨',
+      color: 'from-orange-600 to-red-600',
     },
   ];
 
@@ -87,7 +87,7 @@ export default function StatisticsSection() {
 
               {/* Card Content */}
               <div className="relative p-8 rounded-2xl border border-border/50 bg-card/50 backdrop-blur-sm hover:border-primary/50 transition-all duration-300 group-hover:scale-105">
-                <div className="text-4xl mb-4">{stat.icon}</div>
+                <div className={`w-1 h-12 rounded-full bg-gradient-to-b ${stat.color} mb-6`} />
 
                 <div className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent mb-2">
                   <Counter end={stat.value} duration={2} suffix={stat.value === 98 ? '%' : '+'} />

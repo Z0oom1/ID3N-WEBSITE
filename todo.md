@@ -72,3 +72,12 @@
 - [x] Adicionar responsividade mobile - remover 3D em celular
 - [x] Integrar logo ID3N oficial no Header
 - [x] Testar notebook em diferentes resoluções
+
+
+## Melhorias de Design - Fase 3
+- [x] Substituir ID3N genérico da hero section pelo logo oficial
+- [x] Remover emotes de todas as seções (ProjectsSection3D, ServicesSection, etc)
+- [x] Adicionar mais efeitos visuais: partículas, gradientes animados, transições
+- [x] Melhorar tipografia e espaçamento geral
+- [x] Adicionar efeitos de blur/glassmorphism nos cards
+- [x] Implementar animações de entrada mais sofisticadas

@@ -4,6 +4,7 @@ import { ArrowRight, ChevronDown } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import LightEffects from '@/components/LightEffects';
+import ParticleEffect from '@/components/ParticleEffect';
 import StatisticsSection from '@/components/StatisticsSection';
 import ServicesSection from '@/components/ServicesSection';
 import ProjectCarousel from '@/components/ProjectCarousel';
@@ -13,10 +14,10 @@ import ContactForm from '@/components/ContactForm';
 const RevealOnScroll = ({ children }: { children: React.ReactNode }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-100px' }}
-      transition={{ duration: 0.8 }}
+      transition={{ duration: 0.8, ease: 'easeOut' }}
     >
       {children}
     </motion.div>
@@ -26,17 +27,18 @@ const RevealOnScroll = ({ children }: { children: React.ReactNode }) => {
 export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false);
   const { scrollY } = useScroll();
-  const y1 = useTransform(scrollY, [0, 500], [0, 200]);
-  const opacity = useTransform(scrollY, [0, 300], [1, 0]);
+  const heroScale = useTransform(scrollY, [0, 500], [1, 0.8]);
+  const heroOpacity = useTransform(scrollY, [0, 500], [1, 0.3]);
 
   useEffect(() => {
     setIsLoaded(true);
   }, []);
 
   return (
-    <div className="min-h-screen bg-background text-foreground selection:bg-primary/30 selection:text-primary">
+    <div className="min-h-screen bg-background text-foreground selection:bg-primary/30 selection:text-primary overflow-hidden">
       {/* Light Effects */}
       <LightEffects />
+      <ParticleEffect />
 
       {/* Background Gradients */}
       <div className="fixed inset-0 pointer-events-none z-0">
@@ -49,86 +51,104 @@ export default function Home() {
       <main className="relative z-10">
         {/* Hero Section */}
         <section id="hero" className="relative min-h-screen flex flex-col items-center justify-center px-4 overflow-hidden pt-20">
-          <motion.div
-            style={{ y: y1, opacity }}
-            className="absolute inset-0 z-0 flex items-center justify-center opacity-20 pointer-events-none"
-          >
-            <div className="w-[800px] h-[800px] border border-border rounded-full animate-[spin_60s_linear_infinite]" />
-            <div className="absolute w-[600px] h-[600px] border border-border/50 rounded-full animate-[spin_40s_linear_infinite_reverse]" />
-          </motion.div>
+          {/* Animated Background Elements */}
+          <div className="absolute inset-0 pointer-events-none">
+            <motion.div
+              className="absolute top-20 left-10 w-72 h-72 bg-primary/10 blur-3xl rounded-full"
+              animate={{
+                y: [0, 30, 0],
+                x: [0, 20, 0],
+              }}
+              transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+            />
+            <motion.div
+              className="absolute bottom-20 right-10 w-72 h-72 bg-accent/10 blur-3xl rounded-full"
+              animate={{
+                y: [0, -30, 0],
+                x: [0, -20, 0],
+              }}
+              transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
+            />
+          </div>
 
-          <div className="max-w-4xl mx-auto text-center relative z-10">
+          <motion.div
+            className="relative z-10 text-center max-w-4xl"
+            initial={{ opacity: 0, y: 30 }}
+            animate={isLoaded ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            style={{ scale: heroScale, opacity: heroOpacity }}
+          >
             {/* Logo */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
+              className="mb-8 flex justify-center"
+              initial={{ opacity: 0, scale: 0.8 }}
               animate={isLoaded ? { opacity: 1, scale: 1 } : {}}
-              transition={{ duration: 1 }}
-              className="mb-12 inline-block"
+              transition={{ duration: 0.8, delay: 0.4 }}
             >
-              <div className="w-16 h-16 md:w-20 md:h-20 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-                <span className="text-white font-bold text-2xl md:text-3xl">ID3N</span>
-              </div>
+              <img
+                src="/logo-id3n.png"
+                alt="ID3N"
+                className="w-24 h-24 md:w-32 md:h-32 object-contain drop-shadow-lg"
+              />
             </motion.div>
 
-            {/* Main Heading */}
+            {/* Main Headline */}
             <motion.h1
+              className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight"
               initial={{ opacity: 0, y: 20 }}
               animate={isLoaded ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-foreground mb-8 leading-[1.1]"
+              transition={{ duration: 0.8, delay: 0.6 }}
             >
-              Arquitetando o <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
+              <span className="text-foreground">Arquitetando o</span>
+              <br />
+              <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent animate-pulse">
                 Futuro Digital
               </span>
             </motion.h1>
 
             {/* Subtitle */}
             <motion.p
+              className="text-lg md:text-xl text-foreground/70 mb-12 max-w-2xl mx-auto leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               animate={isLoaded ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-lg md:text-xl text-foreground/70 mb-12 max-w-2xl mx-auto font-light leading-relaxed"
+              transition={{ duration: 0.8, delay: 0.8 }}
             >
               Soluções minimalistas, performance máxima. Transformamos complexidade em simplicidade através de software de alta precisão.
             </motion.p>
 
             {/* CTA Buttons */}
             <motion.div
+              className="flex flex-col sm:flex-row gap-4 justify-center items-center"
               initial={{ opacity: 0, y: 20 }}
               animate={isLoaded ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              className="flex flex-col sm:flex-row gap-6 justify-center"
+              transition={{ duration: 0.8, delay: 1 }}
             >
-              <motion.a
-                href="#contact"
-                className="px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-full hover:bg-primary/90 transition-all duration-300 flex items-center justify-center gap-2 group shadow-xl shadow-primary/20"
-                whileHover={{ scale: 1.05 }}
+              <motion.button
+                className="px-8 py-4 rounded-full bg-gradient-to-r from-primary to-accent text-white font-semibold flex items-center gap-2 hover:shadow-lg hover:shadow-primary/50 transition-all"
+                whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
               >
                 Iniciar Projeto
-                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-              </motion.a>
-              <motion.a
-                href="#projects"
-                className="px-8 py-4 border border-border text-foreground font-medium rounded-full hover:bg-foreground/5 transition-all duration-300"
-                whileHover={{ scale: 1.05 }}
+                <ArrowRight size={20} />
+              </motion.button>
+
+              <motion.button
+                className="px-8 py-4 rounded-full border-2 border-primary/50 text-foreground font-semibold hover:border-primary hover:bg-primary/5 transition-all"
+                whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
               >
                 Explorar Portfólio
-              </motion.a>
+              </motion.button>
             </motion.div>
-          </div>
+          </motion.div>
 
           {/* Scroll Indicator */}
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.5, duration: 1 }}
-            className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-foreground/50"
+            className="absolute bottom-10 left-1/2 -translate-x-1/2"
+            animate={{ y: [0, 10, 0] }}
+            transition={{ duration: 2, repeat: Infinity }}
           >
-            <span className="text-xs uppercase tracking-[0.2em]">Scroll</span>
-            <ChevronDown className="animate-bounce" size={20} />
+            <ChevronDown className="text-primary/50" size={32} />
           </motion.div>
         </section>
 

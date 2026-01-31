@@ -12,7 +12,6 @@ export default function ProjectsSection3D() {
       title: 'Plataforma E-commerce',
       description: 'Sistema completo de e-commerce com pagamento integrado',
       color: 'from-blue-600 to-cyan-600',
-      icon: '🛍️',
       features: ['React', 'Node.js', 'PostgreSQL', 'Stripe'],
     },
     {
@@ -20,7 +19,6 @@ export default function ProjectsSection3D() {
       title: 'App de Gestão',
       description: 'Gerenciamento de projetos com colaboração em tempo real',
       color: 'from-purple-600 to-pink-600',
-      icon: '📱',
       features: ['React Native', 'Firebase', 'Redux'],
     },
     {
@@ -28,7 +26,6 @@ export default function ProjectsSection3D() {
       title: 'Dashboard Analítico',
       description: 'Visualizações de dados e relatórios customizáveis',
       color: 'from-green-600 to-emerald-600',
-      icon: '📊',
       features: ['Vue.js', 'D3.js', 'Express'],
     },
     {
@@ -36,7 +33,6 @@ export default function ProjectsSection3D() {
       title: 'Plataforma Educação',
       description: 'LMS com cursos, videoaulas e certificação automática',
       color: 'from-orange-600 to-red-600',
-      icon: '🎓',
       features: ['Next.js', 'Prisma', 'AWS'],
     },
   ];
@@ -97,7 +93,6 @@ export default function ProjectsSection3D() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.2, duration: 0.5 }}
                   >
-                    <div className="text-7xl mb-6">{project.icon}</div>
                     <h3 className="text-3xl font-bold mb-3">{project.title}</h3>
                     <p className="text-lg opacity-90 mb-8 max-w-xs mx-auto">{project.description}</p>
 
