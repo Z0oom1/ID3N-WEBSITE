@@ -47,13 +47,15 @@ export default function Header() {
           {/* Logo */}
           <Link href="/">
             <motion.div
-              className="flex items-center gap-2 cursor-pointer"
+              className="flex items-center gap-3 cursor-pointer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-                <span className="text-white font-bold text-lg">ID3N</span>
-              </div>
+              <img
+                src="/logo-id3n.png"
+                alt="ID3N Logo"
+                className="w-10 h-10 md:w-12 md:h-12 object-contain"
+              />
               <span className="hidden sm:inline font-bold text-lg text-foreground">ID3N</span>
             </motion.div>
           </Link>

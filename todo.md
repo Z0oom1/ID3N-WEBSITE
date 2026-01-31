@@ -65,3 +65,10 @@
 - [x] Implementar hover com glow suave e sombras dinâmicas
 - [x] Otimizar performance para animações 3D
 - [x] Testar responsividade em mobile/tablet
+
+
+## Correções & Melhorias
+- [x] Corrigir notebook 3D para proporções reais (16:10 ou 16:9)
+- [x] Adicionar responsividade mobile - remover 3D em celular
+- [x] Integrar logo ID3N oficial no Header
+- [x] Testar notebook em diferentes resoluções
