@@ -51,3 +51,17 @@
 - [ ] Checkpoint inicial
 - [ ] Commit e push para GitHub
 - [ ] Verificação final de funcionalidades
+
+
+## Redesign Cinematográfico (Nova Fase)
+- [x] Copiar logo ID3N oficial para projeto
+- [x] Implementar animações de luz global com scroll
+- [x] Criar componente 3D do notebook (CSS 3D ou Three.js)
+- [x] Implementar seção de projetos com notebook 3D interativo
+- [x] Adicionar efeito de abertura do notebook com scroll
+- [x] Implementar câmera aproximando-se da tela
+- [x] Criar transições suaves entre projetos
+- [x] Adicionar microanimações de fade + movimento
+- [x] Implementar hover com glow suave e sombras dinâmicas
+- [x] Otimizar performance para animações 3D
+- [x] Testar responsividade em mobile/tablet

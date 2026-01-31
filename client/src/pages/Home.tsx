@@ -3,9 +3,11 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, ChevronDown } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import LightEffects from '@/components/LightEffects';
 import StatisticsSection from '@/components/StatisticsSection';
 import ServicesSection from '@/components/ServicesSection';
 import ProjectCarousel from '@/components/ProjectCarousel';
+import ProjectsSection3D from '@/components/ProjectsSection3D';
 import ContactForm from '@/components/ContactForm';
 
 const RevealOnScroll = ({ children }: { children: React.ReactNode }) => {
@@ -33,6 +35,9 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-background text-foreground selection:bg-primary/30 selection:text-primary">
+      {/* Light Effects */}
+      <LightEffects />
+
       {/* Background Gradients */}
       <div className="fixed inset-0 pointer-events-none z-0">
         <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/5 blur-[120px] rounded-full" />
@@ -137,15 +142,20 @@ export default function Home() {
           <ServicesSection />
         </RevealOnScroll>
 
-        {/* Projects Section */}
+        {/* Projects 3D Section */}
         <RevealOnScroll>
-          <ProjectCarousel />
+          <ProjectsSection3D />
         </RevealOnScroll>
 
         {/* Contact Section */}
         <RevealOnScroll>
           <ContactForm />
         </RevealOnScroll>
+
+        {/* Legacy Projects Carousel - Hidden but available */}
+        <div className="hidden">
+          <ProjectCarousel />
+        </div>
       </main>
 
       <Footer />
