@@ -107,3 +107,16 @@
 - [x] Adicionar link para https://awiden.netlify.app
 - [x] Melhorar responsividade para tablet
 - [x] Deixar outros projetos como estao para edicao posterior
+
+
+## Melhorias Finais de Design & Efeitos Visuais
+- [x] Adicionar mais efeitos de particulas animadas
+- [x] Implementar blur/glassmorphism em mais elementos
+- [x] Adicionar animacoes de texto com efeitos de digitacao
+- [x] Criar efeitos de brilho/glow em botoes e cards
+- [x] Implementar animacoes de ondas/waves
+- [ ] Adicionar efeitos de distorcao/morphing
+- [x] Melhorar transicoes entre secoes
+- [x] Adicionar efeitos de sombra dinamica
+- [x] Implementar animacoes de rotacao 3D em elementos
+- [x] Adicionar efeitos de reflexo/mirror

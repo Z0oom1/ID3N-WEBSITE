@@ -7,6 +7,7 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import CustomCursor from "./components/CustomCursor";
 import LoadingScreen from "./components/LoadingScreen";
+import AdvancedParticles from "./components/AdvancedParticles";
 import Home from "./pages/Home";
 
 function Router() {
@@ -45,6 +46,7 @@ function App() {
         // switchable
       >
         <TooltipProvider>
+          <AdvancedParticles />
           <CustomCursor />
           <LoadingScreen isLoading={isLoading} />
           <Toaster />
