@@ -81,3 +81,10 @@
 - [x] Melhorar tipografia e espaçamento geral
 - [x] Adicionar efeitos de blur/glassmorphism nos cards
 - [x] Implementar animações de entrada mais sofisticadas
+
+
+## Cursor Customizado & Loading Screen
+- [x] Criar cursor customizado moderno e bonito
+- [x] Implementar tela de loading cinematográfica
+- [x] Adicionar animações suaves na transição de loading
+- [x] Testar loading em diferentes conexões
