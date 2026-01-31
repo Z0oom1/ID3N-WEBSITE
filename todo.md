@@ -88,3 +88,15 @@
 - [x] Implementar tela de loading cinematográfica
 - [x] Adicionar animações suaves na transição de loading
 - [x] Testar loading em diferentes conexões
+
+## Migração para JSON & Design Avançado
+- [x] Migrar armazenamento de leads para JSON
+- [x] Implementar efeitos de scroll parallax
+- [x] Adicionar reveal animations ao scroll
+- [x] Implementar stagger animations para listas
+- [x] Adicionar eventos de mouse interativos
+- [x] Criar micro-interações minimalistas
+- [x] Adicionar transições suaves entre seções
+- [x] Implementar hover effects sofisticados
+- [x] Adicionar blur/glassmorphism effects
+- [ ] Testar em mobile, tablet e desktop

@@ -1,13 +1,11 @@
 import { COOKIE_NAME } from "@shared/const";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
-import { publicProcedure, protectedProcedure, router } from "./_core/trpc";
-import { getDb } from "./db";
-import { leads } from "../drizzle/schema";
+import { publicProcedure, router } from "./_core/trpc";
 import { sendLeadNotification } from "./whatsapp";
+import { addLead, getAllLeads } from "./leads-storage";
 
 export const appRouter = router({
-    // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
   system: systemRouter,
   auth: router({
     me: publicProcedure.query(opts => opts.ctx.user),
@@ -36,40 +34,51 @@ export const appRouter = router({
         };
       })
       .mutation(async ({ input }) => {
-        const db = await getDb();
-        if (!db) throw new Error('Database not available');
-        
-        const result = await db.insert(leads).values({
-          name: input.name,
-          email: input.email,
-          phone: input.phone,
-          cpf: input.cpf,
-          company: input.company,
-          service: input.service,
-          message: input.message,
-          whatsappSent: 0,
-        });
-        
         try {
-          const whatsappResult = await sendLeadNotification({
+          // Save lead to JSON file
+          const lead = addLead({
             name: input.name,
             email: input.email,
             phone: input.phone,
             cpf: input.cpf,
             company: input.company,
             service: input.service,
-            message: input.message,
           });
           
-          if (whatsappResult.success) {
-            await db.update(leads).set({ whatsappSent: 1 });
+          // Send WhatsApp notification
+          try {
+            await sendLeadNotification({
+              name: input.name,
+              email: input.email,
+              phone: input.phone,
+              cpf: input.cpf,
+              company: input.company,
+              service: input.service,
+              message: input.message,
+            });
+          } catch (error) {
+            console.error('Error sending WhatsApp notification:', error);
+            // Don't throw - WhatsApp notification is optional
           }
+          
+          return {
+            success: true,
+            lead,
+          };
         } catch (error) {
-          console.error('Error sending WhatsApp notification:', error);
+          console.error('Error creating lead:', error);
+          throw new Error('Failed to create lead');
         }
-        
-        return result;
       }),
+
+    list: publicProcedure.query(() => {
+      try {
+        return getAllLeads();
+      } catch (error) {
+        console.error('Error fetching leads:', error);
+        return [];
+      }
+    }),
   }),
 });
 

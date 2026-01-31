@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion';
 import { Code2, Smartphone, Zap, Shield, Palette, BarChart3 } from 'lucide-react';
+import { ScrollReveal } from './ScrollReveal';
+import { HoverCard } from './HoverCard';
 
 export default function ServicesSection() {
   const services = [
@@ -95,16 +97,16 @@ export default function ServicesSection() {
           {services.map((service, index) => {
             const Icon = service.icon;
             return (
-              <motion.div
-                key={index}
-                variants={itemVariants}
-                className="group relative"
-              >
-                {/* Animated Background */}
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <ScrollReveal key={index} delay={index * 0.1}>
+                <motion.div
+                  variants={itemVariants}
+                  className="group relative"
+                >
+                  {/* Animated Background */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                {/* Card */}
-                <div className="relative h-full p-8 rounded-2xl border border-border/50 bg-card/50 backdrop-blur-sm hover:border-primary/50 transition-all duration-300 group-hover:scale-105 flex flex-col">
+                  {/* Card */}
+                  <HoverCard className="relative h-full p-8 rounded-2xl border border-border/50 bg-card/50 backdrop-blur-sm hover:border-primary/50 transition-all duration-300 group-hover:scale-105 flex flex-col">
                   {/* Icon Container */}
                   <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${service.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
                     <Icon className="w-7 h-7 text-white" />
@@ -126,10 +128,11 @@ export default function ServicesSection() {
                     <span className="ml-2 group-hover/link:translate-x-1 transition-transform">→</span>
                   </motion.a>
 
-                  {/* Border Animation */}
-                  <div className="absolute inset-0 rounded-2xl border border-primary/0 group-hover:border-primary/50 transition-all duration-300" />
-                </div>
-              </motion.div>
+                    {/* Border Animation */}
+                    <div className="absolute inset-0 rounded-2xl border border-primary/0 group-hover:border-primary/50 transition-all duration-300" />
+                  </HoverCard>
+                </motion.div>
+              </ScrollReveal>
             );
           })}
         </motion.div>
